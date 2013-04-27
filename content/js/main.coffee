@@ -38,7 +38,7 @@ require [
 			@entity = null
 
 		animate: (time) ->
-			speed = Math.sqrt(@velocity.lengthSquared())
+			#speed = Math.sqrt(@velocity.lengthSquared())
 			if keyboard.isPressed('up')
 				@velocity[0] += time * config.acceleration * Math.cos(@rotation)
 				@velocity[1] += time * config.acceleration * Math.sin(@rotation)
