@@ -25,6 +25,12 @@ require [
 		friction: .1 #1 #.0001
 		spotRadius: .4
 
+		# How much the camera extrapolates the car's position from current velocity
+		cameraAnticipationFactor: 25
+
+	# Use Blender's convention where z is up
+	UP = new Vector3(0, 0, 1)
+
 	spotRadiusSquared = config.spotRadius * config.spotRadius
 
 	distanceSquared = (a, b) ->
@@ -59,10 +65,26 @@ require [
 			@angularVelocity *= Math.pow(config.angularFriction, time)
 			@velocity.mul Math.pow(config.friction, time)
 
+	class Camera
+		constructor: ->
+			@targetLookAt = new Vector3()
+			@lookAt = new Vector3()
+
+		animate: (time) ->
+			@targetLookAt.set(car.velocity)
+			@targetLookAt.mul(config.cameraAnticipationFactor)
+			@targetLookAt.add(car.position)
+			#@targetLookAt.set(car.position)
+			@lookAt.lerp(@targetLookAt, 1 - Math.pow(.2, time))
+
+			@entity.transformComponent.transform.lookAt(@lookAt, UP)
+			@entity.transformComponent.setUpdated()
+
 	# Maps ref to entity
 	refToEntity = {}
 
 	car = new Car()
+	camera = new Camera()
 
 	init = ->
 		goo = new GooRunner(
@@ -89,6 +111,8 @@ require [
 				car.position
 			)
 
+			camera.entity = refToEntity['entities/Camera.entity']
+
 			spots = (spot for ref, spot of refToEntity when ref.match(/^entities\/spot/i))
 
 			console.log 'start!', spots
@@ -105,6 +129,11 @@ require [
 							spot.removeFromWorld()
 							spots = _.without(spots, spot)
 							break
+			)
+
+			camera.entity.setComponent new ScriptComponent(
+				run: (entity) ->
+					camera.animate(1 / 60)
 			)
 
 
