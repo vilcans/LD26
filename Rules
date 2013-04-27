@@ -9,16 +9,13 @@ route '/resources/*' do
 end
 
 
-compile '/style/' do
+compile '/style/style/' do
   if item[:extension] == 'less'
     filter :less
   end
 end
-# route '/style/' do
-#   '/style.css'
-# end
-route '/less/*/' do
-  # Ignore subdirectories of less/ (includes)
+route '/style/style/' do
+  '/style.css'
 end
 
 # All JavaScript sources concatenated and minified
@@ -50,6 +47,10 @@ route '/js/*' do
   unless $production
     item.identifier.chop + '.js'
   end
+end
+
+route '/dev/' do
+  '/dev.html'
 end
 
 # Compile the test runner HTML

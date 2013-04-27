@@ -1,3 +1,15 @@
+<!-- Release code -->
 <script src="lib/almond.js"></script>
 <script src="lib/goo.js"></script>
 <script src="js/all.js"></script>
+
+<% if @site.config[:analytics_account] %>
+  <script>
+    if(window.location.hostname != 'localhost') {
+      var _gaq=[['_setAccount','<%= @site.config[:analytics_account] %>'],['_trackPageview']];
+      (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+      g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+      s.parentNode.insertBefore(g,s)}(document,'script'));
+    }
+  </script>
+<% end %>

@@ -34,21 +34,5 @@
 <script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.2.min.js"><\/script>')</script>
 -->
 
-<% if $concat_js %>
-  <script src="/js/all.js"></script>
-<% else %>
-  <%= script_tags(module_items + [main_item]) %>
-<% end %>
-
-<% if @site.config[:analytics_account] %>
-  <script>
-    if(window.location.hostname != 'localhost') {
-      var _gaq=[['_setAccount','<%= @site.config[:analytics_account] %>'],['_trackPageview']];
-      (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-      g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-      s.parentNode.insertBefore(g,s)}(document,'script'));
-    }
-  </script>
-<% end %>
 </body>
 </html>
