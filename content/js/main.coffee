@@ -27,7 +27,10 @@ require [
 
 	spotRadiusSquared = config.spotRadius * config.spotRadius
 
-	tmpVec3 = new Vector3()
+	distanceSquared = (a, b) ->
+		dx = a.data[0] - b.data[0]
+		dy = a.data[1] - b.data[1]
+		return dx * dx + dy * dy
 
 	class Car
 		constructor: ->
@@ -98,8 +101,7 @@ require [
 					entity.transformComponent.setUpdated()
 
 					for spot in spots
-						distance = car.position.distanceSquared(spot.transformComponent.transform.translation)
-						if distance < spotRadiusSquared
+						if distanceSquared(car.position, spot.transformComponent.transform.translation) < spotRadiusSquared
 							spot.removeFromWorld()
 							spots = _.without(spots, spot)
 							break
