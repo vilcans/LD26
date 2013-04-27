@@ -15,9 +15,9 @@
     "projectionMatrix": "PROJECTION_MATRIX", 
     "materialDiffuse": "DIFFUSE", 
     "materialAmbient": [
-      0.6, 
-      0.6, 
-      0.6, 
+      0.1, 
+      0.1, 
+      0.1, 
       1
     ], 
     "diffuseMap": "TEXTURE0"

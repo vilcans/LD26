@@ -1,5 +1,12 @@
 {
   "textures": [], 
-  "uniforms": {}, 
+  "uniforms": {
+    "materialAmbient": [
+      0.6, 
+      0.6, 
+      0.6, 
+      1
+    ]
+  }, 
   "shaderRef": "shaders/default.shader"
 }
