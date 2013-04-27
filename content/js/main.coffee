@@ -51,6 +51,10 @@ require [
 			@angularVelocity *= Math.pow(config.angularFriction, time)
 			@velocity.mul Math.pow(config.friction, time)
 
+
+	# Maps ref to entity
+	refToEntity = {}
+
 	car = new Car()
 
 	init = ->
@@ -63,17 +67,21 @@ require [
 		sceneLoader = new SceneLoader(loader: loader, world: goo.world)
 		sceneLoader.load('default.scene').then((entities) ->
 			for entity in entities
-				console.log 'Adding entity', entity.ref
+				refToEntity[entity.ref] = entity
 				entity.addToWorld()
-				if entity.ref == 'entities/Car.entity'
-					car.entity = entity
-					car.position.set(entity.transformComponent.transform.translation)
 			start()
 		).then(null, ->
 			alert 'Failed to load scene: ' + e
 		)
 
 		start = ->
+			car.entity = refToEntity['entities/Car.entity']
+			Vector3.add(
+				refToEntity['entities/CarGroup.entity'].transformComponent.transform.translation,
+				car.entity.transformComponent.transform.translation,
+				car.position
+			)
+
 			console.log 'start!'
 			car.entity.setComponent new ScriptComponent(
 				run : (entity) ->
