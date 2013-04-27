@@ -18,11 +18,11 @@ require [
 	config =
 		acceleration: .2
 		retardation: .2
-		turnAcceleration: 800 / 180 * Math.PI
+		turnAcceleration: 20 / 180 * Math.PI
 
 		# After 1 second, angular velocity will have decreased to this fraction of original
 		angularFriction: .01
-		friction: .001
+		friction: .1 #1 #.0001
 
 	class Car
 		constructor: ->
@@ -41,9 +41,9 @@ require [
 				@velocity[0] -= time * config.retardation * Math.cos(@rotation)
 				@velocity[1] -= time * config.retardation * Math.sin(@rotation)
 			if keyboard.isPressed('right')
-				@angularVelocity -= speed * time * config.turnAcceleration
+				@angularVelocity -= time * config.turnAcceleration
 			if keyboard.isPressed('left')
-				@angularVelocity += speed * time * config.turnAcceleration
+				@angularVelocity += time * config.turnAcceleration
 
 			@position.add @velocity
 			@rotation += @angularVelocity
