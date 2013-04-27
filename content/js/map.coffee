@@ -1,7 +1,3 @@
-pixelTypes =
-	WALL: 0  # used as boolean: must be zero
-	FREE: 1
-
 class @Map
 	constructor: (collisionImage) ->
 		@canvas = document.createElement('canvas')
@@ -27,21 +23,12 @@ class @Map
 			if r > 200 then v += 2
 			if g > 200 then v += 4
 
-			if v == 0
-				t = pixelTypes.WALL
-			else if v == 7
-				t = pixelTypes.FREE
-			else
-				console.warn 'Unknown color:', v
-				t = pixelTypes.WALL
-			@collisionData[i] = t
+			@collisionData[i] = v
 
 	getType: (x, y) ->
 		if x < 0 or x >= @width or y < 0 or y >= @height
-			return pixelTypes.WALL
+			return 0
 		@collisionData[(x + (@height - y - 1) * @width)]
 
 	getIndex: (x, y) ->
 		(x + (@height - y - 1) * @width)
-
-Map.pixelTypes = pixelTypes

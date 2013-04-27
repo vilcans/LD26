@@ -1,20 +1,6 @@
 {
   "components": {
-    "meshData": {
-      "meshRef": "meshes/Wheel.mesh"
-    }, 
-    "meshRenderer": {
-      "materialRefs": [
-        "materials/Wheel.material"
-      ]
-    }, 
     "transform": {
-      "parentRef": "entities/Car.entity", 
-      "rotation": [
-        -0.0, 
-        -0.0, 
-        0.0
-      ], 
       "scale": [
         1.0, 
         1.0, 
@@ -24,6 +10,20 @@
         -2.0, 
         3.0, 
         0.0
+      ], 
+      "rotation": [
+        -0.0, 
+        -0.0, 
+        0.0
+      ], 
+      "parentRef": "entities/Car.entity"
+    }, 
+    "meshData": {
+      "meshRef": "meshes/Wheel.mesh"
+    }, 
+    "meshRenderer": {
+      "materialRefs": [
+        "materials/Wheel.material"
       ]
     }
   }

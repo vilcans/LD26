@@ -1,19 +1,6 @@
 {
   "components": {
-    "meshData": {
-      "meshRef": "meshes/Body.mesh"
-    }, 
-    "meshRenderer": {
-      "materialRefs": [
-        "materials/Car.material"
-      ]
-    }, 
     "transform": {
-      "rotation": [
-        -0.0, 
-        -0.0, 
-        0.0
-      ], 
       "scale": [
         0.10000002384185791, 
         0.10000002384185791, 
@@ -23,6 +10,19 @@
         0.0, 
         0.0, 
         0.0
+      ], 
+      "rotation": [
+        -0.0, 
+        -0.0, 
+        0.0
+      ]
+    }, 
+    "meshData": {
+      "meshRef": "meshes/Body.mesh"
+    }, 
+    "meshRenderer": {
+      "materialRefs": [
+        "materials/Car.material"
       ]
     }
   }

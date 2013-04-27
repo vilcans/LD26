@@ -1,28 +1,28 @@
 {
   "components": {
-    "meshData": {
-      "meshRef": "meshes/Plane.007.mesh"
-    }, 
-    "meshRenderer": {
-      "materialRefs": [
-        "materials/Dirt.material"
-      ]
-    }, 
     "transform": {
-      "rotation": [
-        -0.0, 
-        -0.0, 
-        0.0
-      ], 
       "scale": [
         0.19999998807907104, 
         0.19999998807907104, 
         0.19999998807907104
       ], 
       "translation": [
-        0.0, 
-        1.0, 
+        2.798694610595703, 
+        -4.267235279083252, 
         0.001000046730041504
+      ], 
+      "rotation": [
+        -0.0, 
+        -0.0, 
+        0.0
+      ]
+    }, 
+    "meshData": {
+      "meshRef": "meshes/Plane.007.mesh"
+    }, 
+    "meshRenderer": {
+      "materialRefs": [
+        "materials/Dirt.material"
       ]
     }
   }

@@ -1,8 +1,12 @@
 {
   "entityRefs": [
-    "entities/Camera.entity", 
+    "entities/Camera1.entity", 
+    "entities/Camera2.entity", 
+    "entities/Camera3.entity", 
+    "entities/Camera4.entity", 
+    "entities/Camera5.entity", 
+    "entities/Camera6.entity", 
     "entities/CarGroup.entity", 
-    "entities/Floor.entity", 
     "entities/Floorplan.entity", 
     "entities/Lamp.entity", 
     "entities/spot1.entity", 

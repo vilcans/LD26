@@ -16,6 +16,8 @@ require [
 	'use strict'
 
 	map = null
+	cameraNumbers = [1..6]
+	cameras = []
 
 	loadImage = (url) ->
 		console.log 'loading', url
@@ -110,7 +112,6 @@ require [
 	refToEntity = {}
 
 	car = new Car()
-	camera = new Camera()
 
 	init = ->
 		goo = new GooRunner(
@@ -137,6 +138,7 @@ require [
 		)
 
 		start = ->
+			console.log 'start'
 			car.entity = refToEntity['entities/Car.entity']
 			Vector3.add(
 				refToEntity['entities/CarGroup.entity'].transformComponent.transform.translation,
@@ -144,18 +146,31 @@ require [
 				car.position
 			)
 
-			camera.entity = refToEntity['entities/Camera.entity']
+			for i in cameraNumbers
+				do (i) ->
+					camera = new Camera()
+					ref = "entities/Camera#{i}.entity"
+					camera.entity = refToEntity[ref]
+					console.assert camera.entity, 'Camera not found:', ref
+					cameras[i] = camera
+					camera.entity.setComponent new ScriptComponent(
+						run: (entity) ->
+							camera.animate(1 / 60)
+					)
 
 			spots = (spot for ref, spot of refToEntity when ref.match(/^entities\/spot/i))
 
-			console.log 'start!'
 			car.entity.setComponent new ScriptComponent(
 				run : (entity) ->
 					car.animate 1 / 60
 
 					type = getTypeAtPosition(car.position)
-					if type == Map.pixelTypes.WALL
+					if type == 0
 						console.log 'aw!'
+					else if type != 7
+						for i in cameraNumbers
+							cameras[i].entity.cameraComponent.isMain = (i == type)
+						goo.world.getSystem('CameraSystem').findMainCamera()
 
 					# Subtract 90 degrees as model is designed to point in the Y direction
 					entity.transformComponent.transform.setRotationXYZ 0, 0, car.rotation - Math.PI / 2
@@ -168,11 +183,5 @@ require [
 							spots = _.without(spots, spot)
 							break
 			)
-
-			camera.entity.setComponent new ScriptComponent(
-				run: (entity) ->
-					camera.animate(1 / 60)
-			)
-
 
 	init()
