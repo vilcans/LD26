@@ -23,6 +23,11 @@ require [
 		# After 1 second, angular velocity will have decreased to this fraction of original
 		angularFriction: .01
 		friction: .1 #1 #.0001
+		spotRadius: .4
+
+	spotRadiusSquared = config.spotRadius * config.spotRadius
+
+	tmpVec3 = new Vector3()
 
 	class Car
 		constructor: ->
@@ -50,7 +55,6 @@ require [
 
 			@angularVelocity *= Math.pow(config.angularFriction, time)
 			@velocity.mul Math.pow(config.friction, time)
-
 
 	# Maps ref to entity
 	refToEntity = {}
@@ -82,7 +86,9 @@ require [
 				car.position
 			)
 
-			console.log 'start!'
+			spots = (spot for ref, spot of refToEntity when ref.match(/^entities\/spot/i))
+
+			console.log 'start!', spots
 			car.entity.setComponent new ScriptComponent(
 				run : (entity) ->
 					car.animate 1 / 60
@@ -90,6 +96,13 @@ require [
 					entity.transformComponent.transform.setRotationXYZ 0, 0, car.rotation - Math.PI / 2
 					entity.transformComponent.transform.translation.set car.position
 					entity.transformComponent.setUpdated()
+
+					for spot in spots
+						distance = car.position.distanceSquared(spot.transformComponent.transform.translation)
+						if distance < spotRadiusSquared
+							spot.removeFromWorld()
+							spots = _.without(spots, spot)
+							break
 			)
 
 
