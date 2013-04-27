@@ -1,0 +1,10 @@
+{
+  "entityRefs": [
+    "entities/Camera.entity", 
+    "entities/Car.entity", 
+    "entities/Wheel1.entity", 
+    "entities/Wheel2.entity", 
+    "entities/Wheel3.entity", 
+    "entities/Wheel4.entity"
+  ]
+}

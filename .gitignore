@@ -6,3 +6,4 @@ releases.git
 *.pyc
 version.txt
 *.sublime-workspace
+*.blend?*
