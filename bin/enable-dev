@@ -1,0 +1,6 @@
+#!/bin/bash -e
+
+rm -rf site
+nanoc
+cd site/js
+ln -s ~/goo/GooJS/src/goo
