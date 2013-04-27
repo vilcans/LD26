@@ -2,7 +2,6 @@
   "vshaderRef": "shaders/default.vert", 
   "attributes": {
     "vertexNormal": "NORMAL", 
-    "vertexUV0": "TEXCOORD0", 
     "vertexPosition": "POSITION"
   }, 
   "uniforms": {
@@ -19,8 +18,7 @@
       0.1, 
       0.1, 
       1
-    ], 
-    "diffuseMap": "TEXTURE0"
+    ]
   }, 
   "fshaderRef": "shaders/default.frag"
 }

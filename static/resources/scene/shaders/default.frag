@@ -1,8 +1,6 @@
 
 precision mediump float;
 
-uniform sampler2D diffuseMap;
-
 uniform vec4 materialAmbient;
 uniform vec4 materialDiffuse;
 uniform vec4 materialSpecular;
@@ -11,11 +9,10 @@ uniform float materialSpecularPower;
 varying vec3 normal;
 varying vec3 lightDir;
 varying vec3 eyeVec;
-varying vec2 texCoord0;
 
 void main(void)
 {
-	vec4 texCol = texture2D(diffuseMap, texCoord0);
+	vec4 texCol = vec4(1.0, 1.0, 1.0, 1.0);
 
 	vec4 final_color = materialAmbient;
 
