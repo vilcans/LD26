@@ -4,16 +4,34 @@ require [
 	'goo/entities/GooRunner'
 	'goo/math/Vector3'
 	'goo/entities/components/ScriptComponent'
+	'goo/util/rsvp'
 ], (
 	Loader
 	SceneLoader
 	GooRunner
 	Vector3
 	ScriptComponent
+	RSVP
 ) ->
 	'use strict'
 
+	map = null
+
+	loadImage = (url) ->
+		console.log 'loading', url
+
+		promise = new RSVP.Promise
+		image = new Image()
+		image.src = url
+		image.onload = ->
+			console.log 'collision map loaded', image
+			promise.resolve(image)
+		return promise
+
 	keyboard = new Keyboard(document.body)
+
+	# Length of the side of one collision square
+	squareSize = .1  # 1 dm
 
 	config =
 		acceleration: .2
@@ -28,6 +46,9 @@ require [
 		# How much the camera extrapolates the car's position from current velocity
 		cameraAnticipationFactor: 25
 
+		leftEdge: -9.5
+		bottomEdge: -11
+
 	# Use Blender's convention where z is up
 	UP = new Vector3(0, 0, 1)
 
@@ -37,6 +58,11 @@ require [
 		dx = a.data[0] - b.data[0]
 		dy = a.data[1] - b.data[1]
 		return dx * dx + dy * dy
+
+	getTypeAtPosition = (position) ->
+		x = Math.floor((position.data[0] - config.leftEdge) / squareSize)
+		y = Math.floor((position.data[1] - config.bottomEdge) / squareSize)
+		return map.getType(x, y)
 
 	class Car
 		constructor: ->
@@ -92,12 +118,19 @@ require [
 		)
 		document.body.appendChild(goo.renderer.domElement);
 
+
 		loader = new Loader(rootPath: 'resources/scene/')
 		sceneLoader = new SceneLoader(loader: loader, world: goo.world)
 		sceneLoader.load('default.scene').then((entities) ->
 			for entity in entities
 				refToEntity[entity.ref] = entity
 				entity.addToWorld()
+		).then(->
+			return loadImage('resources/collision.png')
+		).then((image) ->
+			console.log 'got image', image
+			map = new Map(image)
+		).then(->
 			start()
 		).then(null, ->
 			alert 'Failed to load scene: ' + e
@@ -115,10 +148,15 @@ require [
 
 			spots = (spot for ref, spot of refToEntity when ref.match(/^entities\/spot/i))
 
-			console.log 'start!', spots
+			console.log 'start!'
 			car.entity.setComponent new ScriptComponent(
 				run : (entity) ->
 					car.animate 1 / 60
+
+					type = getTypeAtPosition(car.position)
+					if type == Map.pixelTypes.WALL
+						console.log 'aw!'
+
 					# Subtract 90 degrees as model is designed to point in the Y direction
 					entity.transformComponent.transform.setRotationXYZ 0, 0, car.rotation - Math.PI / 2
 					entity.transformComponent.transform.translation.set car.position
