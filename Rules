@@ -1,0 +1,106 @@
+#!/usr/bin/env ruby
+
+compile '/resources/*' do
+end
+
+route '/resources/*' do
+  # /resources/foo.entity/ → /resources/foo.entity
+  item.identifier.chop
+end
+
+
+compile '/style/' do
+  if item[:extension] == 'less'
+    filter :less
+  end
+end
+# route '/style/' do
+#   '/style.css'
+# end
+route '/less/*/' do
+  # Ignore subdirectories of less/ (includes)
+end
+
+# All JavaScript sources concatenated and minified
+compile '/js/all/' do
+  filter :erb
+  if $minify_js
+    filter :uglify_js
+  end
+end
+route '/js/all/' do
+  '/js/all.js'
+end
+
+# Compile CoffeeScript into JS. Don't do anything with JS.
+compile '/js/*' do
+  if item[:extension] == 'coffee'
+    filter :coffeescript
+  end
+end
+
+# Libs are always available as modules
+route '/lib/*' do
+  item.identifier.chop + '.js'
+end
+
+# Access single JS modules.
+# Only for development use. In production, use /js/all/
+route '/js/*' do
+  unless $production
+    item.identifier.chop + '.js'
+  end
+end
+
+# Compile the test runner HTML
+compile '/test/' do
+  filter :erb
+end
+unless $testing
+  route '/test/*' do end
+end
+
+compile 'assets/audio/*' do
+  if item[:extension] == 'wav'
+    filter :oggenc
+  end
+end
+route 'assets/audio/*' do
+  if item[:extension] == 'wav'
+    item.identifier.chop + '.ogg'
+  else
+    item.identifier.chop + '.' + item[:extension]
+  end
+end
+
+compile 'resources/audio/*', :rep => :mp3 do
+  if item[:extension] == 'wav'
+    filter :mp3enc
+  end
+end
+route 'resources/audio/*', :rep => :mp3 do
+  if item[:extension] == 'wav'
+    item.identifier.chop + '.mp3'
+  else
+    item.identifier.chop + '.' + item[:extension]
+  end
+end
+
+compile '*' do
+  if item[:extension] == 'html'
+    filter :erb
+    layout 'default'
+  end
+end
+
+route '*' do
+  if item[:extension] == 'html'
+    # Write item with identifier /foo/ to /foo/index.html
+    item.identifier + 'index.html'
+  else
+    # Write item with identifier /foo/ to /foo.ext
+    item.identifier.chop + '.' + item[:extension]
+  end
+end
+
+layout '*', :erb

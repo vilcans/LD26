@@ -1,0 +1,8 @@
+{
+  "entityRefs": [
+    "entities/Camera.entity", 
+    "entities/Cube.entity", 
+    "entities/Lamp.entity", 
+    "entities/Sphere.entity"
+  ]
+}

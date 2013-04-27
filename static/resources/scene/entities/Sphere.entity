@@ -1,0 +1,29 @@
+{
+  "components": {
+    "transform": {
+      "rotation": [
+        -0.0, 
+        -0.0, 
+        0.0
+      ], 
+      "translation": [
+        -2.5120346546173096, 
+        -1.3457329273223877, 
+        0.0
+      ], 
+      "scale": [
+        1.0, 
+        1.0, 
+        1.0
+      ]
+    }, 
+    "meshRenderer": {
+      "materialRefs": [
+        "materials/Material.material"
+      ]
+    }, 
+    "meshData": {
+      "meshRef": "meshes/Sphere.mesh"
+    }
+  }
+}
