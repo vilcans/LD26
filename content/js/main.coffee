@@ -17,8 +17,7 @@ require [
 
 	config =
 		acceleration: .2
-		retardation: .3
-		reverseAcceleration: .2
+		retardation: .2
 		turnAcceleration: 800 / 180 * Math.PI
 
 		# After 1 second, angular velocity will have decreased to this fraction of original
@@ -60,7 +59,7 @@ require [
 		)
 		document.body.appendChild(goo.renderer.domElement);
 
-		loader = new Loader(rootPath: 'resources/car/')
+		loader = new Loader(rootPath: 'resources/scene/')
 		sceneLoader = new SceneLoader(loader: loader, world: goo.world)
 		sceneLoader.load('default.scene').then((entities) ->
 			for entity in entities
@@ -68,7 +67,7 @@ require [
 				entity.addToWorld()
 				if entity.ref == 'entities/Car.entity'
 					car.entity = entity
-					#car.entity.transformComponent.transform.translation[0] -= 1
+					car.position.set(entity.transformComponent.transform.translation)
 			start()
 		).then(null, ->
 			alert 'Failed to load scene: ' + e

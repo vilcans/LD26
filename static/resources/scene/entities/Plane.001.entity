@@ -1,0 +1,29 @@
+{
+  "components": {
+    "meshData": {
+      "meshRef": "meshes/Plane.001.mesh"
+    }, 
+    "meshRenderer": {
+      "materialRefs": [
+        "materials/Wall.material"
+      ]
+    }, 
+    "transform": {
+      "rotation": [
+        89.999995674289, 
+        -0.0, 
+        0.0
+      ], 
+      "scale": [
+        1.0, 
+        1.0, 
+        1.0
+      ], 
+      "translation": [
+        -7.0, 
+        8.0, 
+        1.0
+      ]
+    }
+  }
+}

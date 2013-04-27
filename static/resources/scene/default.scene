@@ -1,0 +1,16 @@
+{
+  "entityRefs": [
+    "entities/Camera.entity", 
+    "entities/CarGroup.entity", 
+    "entities/Floor.entity", 
+    "entities/Lamp.entity", 
+    "entities/Plane.entity", 
+    "entities/Plane.001.entity", 
+    "entities/Plane.002.entity", 
+    "entities/Car.entity", 
+    "entities/Wheel2.entity", 
+    "entities/Wheel1.entity", 
+    "entities/Wheel3.entity", 
+    "entities/Wheel4.entity"
+  ]
+}
