@@ -61,10 +61,6 @@ window.addCollisionData = function(b2Vec2, world, bodyDef, fixDef) {
   ]);
   world.CreateBody(bodyDef).CreateFixture(fixDef);
   fixDef.shape.SetAsArray([
-    new b2Vec2(-3.9000000953674316, 0.09999990463256836), new b2Vec2(-4.5, 0.09999990463256836), new b2Vec2(-4.5, -0.09999996423721313), new b2Vec2(-3.9000000953674316, -0.09999996423721313)
-  ]);
-  world.CreateBody(bodyDef).CreateFixture(fixDef);
-  fixDef.shape.SetAsArray([
     new b2Vec2(-3.700000762939453, 5.799999713897705), new b2Vec2(-3.90000057220459, 5.799999713897705), new b2Vec2(-3.90000057220459, 5.5), new b2Vec2(-3.700000762939453, 5.5)
   ]);
   world.CreateBody(bodyDef).CreateFixture(fixDef);
@@ -105,7 +101,7 @@ window.addCollisionData = function(b2Vec2, world, bodyDef, fixDef) {
   ]);
   world.CreateBody(bodyDef).CreateFixture(fixDef);
   fixDef.shape.SetAsArray([
-    new b2Vec2(-3.6999998092651367, 0.10000014305114746), new b2Vec2(-3.9000000953674316, 0.09999990463256836), new b2Vec2(-3.8999996185302734, -3.5999999046325684), new b2Vec2(-3.6999998092651367, -3.5999999046325684)
+    new b2Vec2(-3.6999998092651367, -0.09999990463256836), new b2Vec2(-3.9000000953674316, -0.10000014305114746), new b2Vec2(-3.8999996185302734, -3.5999999046325684), new b2Vec2(-3.6999998092651367, -3.5999999046325684)
   ]);
   world.CreateBody(bodyDef).CreateFixture(fixDef);
   fixDef.shape.SetAsArray([
@@ -117,7 +113,7 @@ window.addCollisionData = function(b2Vec2, world, bodyDef, fixDef) {
   ]);
   world.CreateBody(bodyDef).CreateFixture(fixDef);
   fixDef.shape.SetAsArray([
-    new b2Vec2(-3.6999998092651367, 4.199999809265137), new b2Vec2(-4.5, 4.199999809265137), new b2Vec2(-4.5, 4.0), new b2Vec2(-3.6999998092651367, 4.0)
+    new b2Vec2(-3.6999998092651367, 4.199999809265137), new b2Vec2(-4.5, 4.199999809265137), new b2Vec2(-4.5, -0.10000002384185791), new b2Vec2(-3.6999998092651367, -0.10000002384185791)
   ]);
   world.CreateBody(bodyDef).CreateFixture(fixDef);
   fixDef.shape.SetAsArray([
@@ -130,6 +126,10 @@ window.addCollisionData = function(b2Vec2, world, bodyDef, fixDef) {
   world.CreateBody(bodyDef).CreateFixture(fixDef);
   fixDef.shape.SetAsArray([
     new b2Vec2(9.0, 6.900000095367432), new b2Vec2(9.0, 7.0), new b2Vec2(-7.799999237060547, 7.0), new b2Vec2(-7.799999237060547, 6.900000095367432)
+  ]);
+  world.CreateBody(bodyDef).CreateFixture(fixDef);
+  fixDef.shape.SetAsArray([
+    new b2Vec2(-2.0, 0.0), new b2Vec2(-1.0, 0.0), new b2Vec2(-1.0, 4.0), new b2Vec2(-2.0, 4.0)
   ]);
   world.CreateBody(bodyDef).CreateFixture(fixDef);
 }
