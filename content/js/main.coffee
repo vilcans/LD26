@@ -118,12 +118,21 @@ require [
 			console.log 'got image', image
 			map = new Map(image)
 		).then(->
-			start()
+			waitForStart()
 		).then(null, ->
 			alert 'Failed to load scene: ' + e
 		)
 
+		waitForStart = ->
+			startButton = document.getElementById('start-button')
+			startButton.style.display = 'block';
+			startButton.addEventListener 'click', ->
+				startButton.style.display = 'none'
+				document.getElementById('instructions').style.display = 'none'
+				start()
+
 		start = ->
+			document.getElementById('goo').style.display = 'block'
 			console.log 'start'
 			car.entity = refToEntity['entities/Car.entity']
 			Vector3.add(
