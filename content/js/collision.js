@@ -1,4 +1,4 @@
-//Collision mesh data! 32 polys
+//Collision mesh data! 33 polys
 window.addCollisionData = function(b2Vec2, world, bodyDef, fixDef) {
   fixDef.shape.SetAsArray([
     new b2Vec2(4.100000381469727, 0.2999999523162842), new b2Vec2(2.0, 0.2999999523162842), new b2Vec2(2.0, 0.20000004768371582), new b2Vec2(4.100000381469727, 0.20000004768371582)
@@ -126,6 +126,10 @@ window.addCollisionData = function(b2Vec2, world, bodyDef, fixDef) {
   world.CreateBody(bodyDef).CreateFixture(fixDef);
   fixDef.shape.SetAsArray([
     new b2Vec2(3.3999996185302734, -0.8999999761581421), new b2Vec2(4.100000381469727, -0.8999999761581421), new b2Vec2(4.100000381469727, 0.20000004768371582), new b2Vec2(3.3999996185302734, 0.20000004768371582)
+  ]);
+  world.CreateBody(bodyDef).CreateFixture(fixDef);
+  fixDef.shape.SetAsArray([
+    new b2Vec2(-9.0, 6.900000095367432), new b2Vec2(9.0, 6.900000095367432), new b2Vec2(9.0, 8.0), new b2Vec2(-9.0, 8.0)
   ]);
   world.CreateBody(bodyDef).CreateFixture(fixDef);
 }
