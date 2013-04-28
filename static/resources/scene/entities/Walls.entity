@@ -1,29 +1,29 @@
 {
   "components": {
-    "meshData": {
-      "meshRef": "meshes/Walls.mesh"
-    }, 
-    "meshRenderer": {
-      "materialRefs": [
-        "materials/Wall.material"
-      ]
-    }, 
     "transform": {
-      "scale": [
-        1.0, 
-        1.0, 
-        1.0
+      "rotation": [
+        -0.0, 
+        -0.0, 
+        0.0
       ], 
       "translation": [
         -9.0, 
         -1.0, 
         0.0
       ], 
-      "rotation": [
-        -0.0, 
-        -0.0, 
-        0.0
+      "scale": [
+        1.0, 
+        1.0, 
+        1.0
       ]
+    }, 
+    "meshRenderer": {
+      "materialRefs": [
+        "materials/Wall.material"
+      ]
+    }, 
+    "meshData": {
+      "meshRef": "meshes/Walls.mesh"
     }
   }
 }

@@ -1,29 +1,29 @@
 {
   "components": {
-    "meshData": {
-      "meshRef": "meshes/Body.mesh"
-    }, 
-    "meshRenderer": {
-      "materialRefs": [
-        "materials/Car.material"
-      ]
-    }, 
     "transform": {
-      "scale": [
-        0.10000002384185791, 
-        0.10000002384185791, 
-        0.10000002384185791
+      "rotation": [
+        -0.0, 
+        -0.0, 
+        0.0
       ], 
       "translation": [
         0.0, 
         0.0, 
         0.0
       ], 
-      "rotation": [
-        -0.0, 
-        -0.0, 
-        0.0
+      "scale": [
+        0.10000002384185791, 
+        0.10000002384185791, 
+        0.10000002384185791
       ]
+    }, 
+    "meshRenderer": {
+      "materialRefs": [
+        "materials/Car.material"
+      ]
+    }, 
+    "meshData": {
+      "meshRef": "meshes/Body.mesh"
     }
   }
 }

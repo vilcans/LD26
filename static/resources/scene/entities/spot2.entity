@@ -1,29 +1,29 @@
 {
   "components": {
-    "meshData": {
-      "meshRef": "meshes/Plane.006.mesh"
-    }, 
-    "meshRenderer": {
-      "materialRefs": [
-        "materials/Dirt.material"
-      ]
-    }, 
     "transform": {
-      "scale": [
-        0.19999998807907104, 
-        0.19999998807907104, 
-        0.19999998807907104
+      "rotation": [
+        -0.0, 
+        -0.0, 
+        0.0
       ], 
       "translation": [
         -1.0, 
         -7.220158576965332, 
         0.0010000000474974513
       ], 
-      "rotation": [
-        -0.0, 
-        -0.0, 
-        0.0
+      "scale": [
+        0.19999998807907104, 
+        0.19999998807907104, 
+        0.19999998807907104
       ]
+    }, 
+    "meshRenderer": {
+      "materialRefs": [
+        "materials/Dirt.material"
+      ]
+    }, 
+    "meshData": {
+      "meshRef": "meshes/Plane.006.mesh"
     }
   }
 }
