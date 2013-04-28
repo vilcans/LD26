@@ -1,5 +1,5 @@
-carLength = .2
-carWidth = .2
+carLength = .4
+carWidth = .4
 
 b2Vec2 = Box2D.Common.Math.b2Vec2
 b2BodyDef = Box2D.Dynamics.b2BodyDef
@@ -29,25 +29,32 @@ class @Physics
 
 		bodyDef = new b2BodyDef
 
-		# create ground
-		#bodyDef.type = b2Body.b2_staticBody
-		#bodyDef.position.x = 9
-		#bodyDef.position.y = 13
-		#fixDef.shape = new b2PolygonShape;
-		#fixDef.shape.SetAsBox 10, 0.5
-		#world.CreateBody(bodyDef).CreateFixture(fixDef)
+		# create walls
+		bodyDef.type = b2Body.b2_staticBody
+		bodyDef.position.x = 0
+		bodyDef.position.y = -10.5
+		fixDef.shape = new b2PolygonShape;
+		fixDef.shape.SetAsBox 10, 0.5
+		world.CreateBody(bodyDef).CreateFixture(fixDef)
+
+		bodyDef.type = b2Body.b2_staticBody
+		bodyDef.position.x = 0.5
+		bodyDef.position.y = 0
+		fixDef.shape = new b2PolygonShape;
+		fixDef.shape.SetAsBox .5, (2 + 2.3) / 2
+		world.CreateBody(bodyDef).CreateFixture(fixDef)
 
 		# create some objects
 		bodyDef.type = b2Body.b2_dynamicBody
-
+		fixDef.density = 1 / 4
 		fixDef.shape = new b2PolygonShape
 		fixDef.shape.SetAsBox(carWidth / 2, carLength / 2)
 		bodyDef.position.x = @car.startPosition.data[0]
 		bodyDef.position.y = @car.startPosition.data[1]
 		@carBody = world.CreateBody(bodyDef)
 		@carBody.CreateFixture(fixDef)
-		@carBody.SetLinearDamping 2
-		@carBody.SetAngularDamping 5
+		@carBody.SetLinearDamping 3
+		@carBody.SetAngularDamping 10
 
 		@bodyDef = bodyDef
 		@fixDef = fixDef
