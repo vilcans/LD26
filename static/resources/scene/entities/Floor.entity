@@ -1,0 +1,29 @@
+{
+  "components": {
+    "meshData": {
+      "meshRef": "meshes/Floor.mesh"
+    }, 
+    "meshRenderer": {
+      "materialRefs": [
+        "materials/Floor.material"
+      ]
+    }, 
+    "transform": {
+      "scale": [
+        1.0, 
+        1.0, 
+        1.0
+      ], 
+      "translation": [
+        0.0, 
+        0.0, 
+        0.0
+      ], 
+      "rotation": [
+        -0.0, 
+        -0.0, 
+        0.0
+      ]
+    }
+  }
+}

@@ -8,6 +8,7 @@
     "entities/Camera6.entity", 
     "entities/CarGroup.entity", 
     "entities/Collision.entity", 
+    "entities/Floor.entity", 
     "entities/Lamp.entity", 
     "entities/spot1.entity", 
     "entities/spot2.entity", 
