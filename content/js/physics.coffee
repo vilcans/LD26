@@ -31,18 +31,32 @@ class @Physics
 
 		# create walls
 		bodyDef.type = b2Body.b2_staticBody
-		bodyDef.position.x = 0
-		bodyDef.position.y = -10.5
-		fixDef.shape = new b2PolygonShape;
-		fixDef.shape.SetAsBox 10, 0.5
-		world.CreateBody(bodyDef).CreateFixture(fixDef)
+		#bodyDef.position.x = 0
+		#bodyDef.position.y = -10.5
+		#fixDef.shape = new b2PolygonShape;
+		#fixDef.shape.SetAsBox 10, 0.5
+		#world.CreateBody(bodyDef).CreateFixture(fixDef)
 
 		bodyDef.type = b2Body.b2_staticBody
-		bodyDef.position.x = 0.5
+		bodyDef.position.x = 0
 		bodyDef.position.y = 0
-		fixDef.shape = new b2PolygonShape;
-		fixDef.shape.SetAsBox .5, (2 + 2.3) / 2
-		world.CreateBody(bodyDef).CreateFixture(fixDef)
+		fixDef.shape = new b2PolygonShape
+
+		window.addCollisionData(b2Vec2, world, bodyDef, fixDef)
+		#debugger
+		#fixDef.shape.SetAsBox .5, (2 + 2.3) / 2
+		#fixDef.shape.SetAsArray([
+			#new b2Vec2(-8.5, -10)
+			#new b2Vec2(9, -10)
+
+		#	new b2Vec2(-9.5, -11)
+		#	new b2Vec2(10, -11)
+			#new b2Vec2(10, 8)
+			#new b2Vec2(9, 8)
+			#new b2Vec2(9, -10)
+			#new b2Vec2(-8.5, -10)
+		#])
+		#world.CreateBody(bodyDef).CreateFixture(fixDef)
 
 		# create some objects
 		bodyDef.type = b2Body.b2_dynamicBody

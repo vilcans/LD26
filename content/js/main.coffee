@@ -36,7 +36,7 @@ require [
 	squareSize = .1  # 1 dm
 
 	config =
-		acceleration: .2
+		acceleration: .6
 		retardation: .2
 		turnTorque: .01
 
