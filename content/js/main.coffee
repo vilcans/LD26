@@ -200,6 +200,7 @@ require [
 							spots = _.without(spots, spot)
 							if spots.length < 17
 								document.getElementById('time-result').innerHTML = frameCount
+								document.getElementById('spots-left').style.display = 'none'
 								document.getElementById('success').style.display = 'block'
 								document.getElementById('goo').style.display = 'none'
 
