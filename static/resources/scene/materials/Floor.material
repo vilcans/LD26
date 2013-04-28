@@ -1,5 +1,8 @@
 {
-  "textures": [], 
-  "uniforms": {}, 
-  "shaderRef": "shaders/default.shader"
+  "textureRefs": [
+    "textures/floor.texture"
+  ], 
+  "uniforms": {
+  }, 
+  "shaderRef": "shaders/floor.shader"
 }
