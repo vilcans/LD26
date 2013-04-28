@@ -41,7 +41,7 @@ require [
 		turnTorque: .01
 
 		# How much the camera extrapolates the car's position from current velocity
-		cameraAnticipationFactor: 25
+		cameraAnticipationFactor: 1
 
 		leftEdge: -9.5
 		bottomEdge: -11
