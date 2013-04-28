@@ -1,0 +1,29 @@
+{
+  "components": {
+    "transform": {
+      "rotation": [
+        -0.0, 
+        -0.0, 
+        0.0
+      ], 
+      "translation": [
+        6.537827014923096, 
+        5.1837992668151855, 
+        0.0010004143696278334
+      ], 
+      "scale": [
+        0.19999998807907104, 
+        0.19999998807907104, 
+        0.19999998807907104
+      ]
+    }, 
+    "meshRenderer": {
+      "materialRefs": [
+        "materials/Dirt.material"
+      ]
+    }, 
+    "meshData": {
+      "meshRef": "meshes/SpotMesh.mesh"
+    }
+  }
+}
