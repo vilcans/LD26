@@ -74,6 +74,9 @@ require [
 			@angularVelocity = 0
 			@entity = null
 
+			@prevPosition = new Vector3(0, 0, 0)
+			@prevRotation = @rotation
+
 		animate: (time) ->
 			#speed = Math.sqrt(@velocity.lengthSquared())
 			if keyboard.isPressed('up')
@@ -87,11 +90,18 @@ require [
 			if keyboard.isPressed('left')
 				@angularVelocity += time * config.turnAcceleration
 
+			@prevPosition.set @position
+			@prevRotation = @rotation
+
 			@position.add @velocity
 			@rotation += @angularVelocity
 
 			@angularVelocity *= Math.pow(config.angularFriction, time)
 			@velocity.mul Math.pow(config.friction, time)
+
+		restore: ->
+			@position.set @prevPosition
+			@rotation = @prevRotation
 
 	class Camera
 		constructor: ->
@@ -166,6 +176,7 @@ require [
 
 					type = getTypeAtPosition(car.position)
 					if type == 0
+						car.restore()
 						console.log 'aw!'
 					else if type != 7
 						for i in cameraNumbers
