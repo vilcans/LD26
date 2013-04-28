@@ -38,7 +38,7 @@ require [
 	config =
 		acceleration: .6
 		retardation: .2
-		turnTorque: .01
+		turnTorque: .05
 
 		# How much the camera extrapolates the car's position from current velocity
 		cameraAnticipationFactor: 1
