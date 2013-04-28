@@ -1,12 +1,34 @@
 {
-  "textures": [], 
-  "uniforms": {
-    "materialAmbient": [
-      0.6, 
-      0.6, 
-      0.6, 
-      1
-    ]
-  }, 
-  "shaderRef": "shaders/default.shader"
+	"textures": [],
+	"uniforms": {
+		"materialAmbient": [
+			0.6,
+			0.6,
+			0.6,
+			1
+		],
+		"materialDiffuse": [
+			0.5,
+			0.5,
+			0.5,
+			1
+		]
+	},
+	"shaderRef": "shaders/default.shader",
+	"blendState": {
+		"blending": "NoBlending",
+		"blendEquation": "AddEquation",
+		"blendSrc": "SrcAlphaFactor",
+		"blendDst": "OneMinusSrcAlphaFactor"
+	},
+	"cullState": {
+		"enabled": true,
+		"cullFace": "Back",
+		"frontFace": "CCW"
+	},
+	"depthState": {
+		"enabled": true,
+		"write": true
+	},
+	"renderQueue": -1
 }
