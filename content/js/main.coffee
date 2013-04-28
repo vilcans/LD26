@@ -38,18 +38,15 @@ require [
 	config =
 		acceleration: .2
 		retardation: .2
-		turnAcceleration: 20 / 180 * Math.PI
-
-		# After 1 second, angular velocity will have decreased to this fraction of original
-		angularFriction: .01
-		friction: .1 #1 #.0001
-		spotRadius: .4
+		turnTorque: .01
 
 		# How much the camera extrapolates the car's position from current velocity
 		cameraAnticipationFactor: 25
 
 		leftEdge: -9.5
 		bottomEdge: -11
+
+		spotRadius: .4
 
 	# Use Blender's convention where z is up
 	UP = new Vector3(0, 0, 1)
@@ -64,44 +61,21 @@ require [
 	getTypeAtPosition = (position) ->
 		x = Math.floor((position.data[0] - config.leftEdge) / squareSize)
 		y = Math.floor((position.data[1] - config.bottomEdge) / squareSize)
-		return map.getType(x, y)
+		t = map.getType(x, y)
+		#console.log position.data[0], position.data[1], x, y, t
+		return t
+
+	physics = null
 
 	class Car
 		constructor: ->
-			@position = new Vector3(0, 0, 0)
-			@velocity = new Vector3(0, 0, 0)
-			@rotation = Math.PI / 2  # 0 is to the right
-			@angularVelocity = 0
+			@startPosition = new Vector3(0, 0, 0)
 			@entity = null
 
-			@prevPosition = new Vector3(0, 0, 0)
-			@prevRotation = @rotation
+			# Update from physics
+			@velocity = new Vector3(0, 0, 0)
+			@position = new Vector3(0, 0, 0)
 
-		animate: (time) ->
-			#speed = Math.sqrt(@velocity.lengthSquared())
-			if keyboard.isPressed('up')
-				@velocity[0] += time * config.acceleration * Math.cos(@rotation)
-				@velocity[1] += time * config.acceleration * Math.sin(@rotation)
-			if keyboard.isPressed('down')
-				@velocity[0] -= time * config.retardation * Math.cos(@rotation)
-				@velocity[1] -= time * config.retardation * Math.sin(@rotation)
-			if keyboard.isPressed('right')
-				@angularVelocity -= time * config.turnAcceleration
-			if keyboard.isPressed('left')
-				@angularVelocity += time * config.turnAcceleration
-
-			@prevPosition.set @position
-			@prevRotation = @rotation
-
-			@position.add @velocity
-			@rotation += @angularVelocity
-
-			@angularVelocity *= Math.pow(config.angularFriction, time)
-			@velocity.mul Math.pow(config.friction, time)
-
-		restore: ->
-			@position.set @prevPosition
-			@rotation = @prevRotation
 
 	class Camera
 		constructor: ->
@@ -127,6 +101,7 @@ require [
 		goo = new GooRunner(
 			#showStats : true
 		)
+		goo.renderer.domElement.id = 'goo'
 		document.body.appendChild(goo.renderer.domElement);
 
 
@@ -153,7 +128,7 @@ require [
 			Vector3.add(
 				refToEntity['entities/CarGroup.entity'].transformComponent.transform.translation,
 				car.entity.transformComponent.transform.translation,
-				car.position
+				car.startPosition
 			)
 
 			for i in cameraNumbers
@@ -170,13 +145,28 @@ require [
 
 			spots = (spot for ref, spot of refToEntity when ref.match(/^entities\/spot/i))
 
+			physics = new Physics(car)
+
 			car.entity.setComponent new ScriptComponent(
 				run : (entity) ->
-					car.animate 1 / 60
+					if keyboard.isPressed('up')
+						physics.setThrottle config.acceleration
+					else if keyboard.isPressed('down')
+						physics.setThrottle -config.retardation
+					else
+						physics.setThrottle 0
+
+					if keyboard.isPressed('left')
+						physics.setTurn config.turnTorque
+					else if keyboard.isPressed('right')
+						physics.setTurn -config.turnTorque
+					else
+						physics.setTurn 0
+
+					physics.update 1 / 60
 
 					type = getTypeAtPosition(car.position)
 					if type == 0
-						car.restore()
 						console.log 'aw!'
 					else if type != 7
 						for i in cameraNumbers
