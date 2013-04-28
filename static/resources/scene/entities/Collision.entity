@@ -4,9 +4,7 @@
       "meshRef": "meshes/Collision.mesh"
     }, 
     "meshRenderer": {
-      "materialRefs": [
-        "materials/Wall.material"
-      ]
+      "materialRefs": []
     }, 
     "transform": {
       "scale": [
