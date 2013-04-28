@@ -24,12 +24,13 @@ body {
 	position: absolute;
 }
 
-#instructions {
+.text {
 	margin-left: 25%;
 	margin-right: 25%;
 	font-size: 2em;
-	z-index: 50;
 	text-align: center;
+	position: absolute;
+	top: 0;
 }
 
 #start-button {
@@ -38,4 +39,27 @@ body {
 	text-align: right;
 	margin-left: auto;
 	margin-right: auto;
+}
+
+#success {
+	display: none;
+}
+
+#time {
+	color: #ff8888;
+	font-weight: bold;
+}
+
+#spots-left {
+	position: absolute;
+	z-index: 5;
+	top: 0;
+	left: 0;
+}
+
+h1 {
+	font-size: 1em;
+}
+h2 {
+	font-size: .5em;
 }

@@ -96,6 +96,7 @@ require [
 	refToEntity = {}
 
 	car = new Car()
+	frameCount = 0
 
 	init = ->
 		goo = new GooRunner(
@@ -154,11 +155,16 @@ require [
 					)
 
 			spots = (spot for ref, spot of refToEntity when ref.match(/^entities\/spot/i))
+			do updateSpotsLeft = ->
+				document.getElementById('spots-left').innerHTML = '' + spots.length
 
 			physics = new Physics(car)
 
 			car.entity.setComponent new ScriptComponent(
 				run : (entity) ->
+					if spots.length == 0
+						return
+					frameCount++
 					if keyboard.isPressed('up')
 						physics.setThrottle config.acceleration
 					else if keyboard.isPressed('down')
@@ -192,7 +198,14 @@ require [
 						if distanceSquared(car.position, spot.transformComponent.transform.translation) < spotRadiusSquared
 							spot.removeFromWorld()
 							spots = _.without(spots, spot)
+							if spots.length < 17
+								document.getElementById('time-result').innerHTML = frameCount
+								document.getElementById('success').style.display = 'block'
+								document.getElementById('goo').style.display = 'none'
+
+							updateSpotsLeft()
 							break
 			)
+
 
 	init()

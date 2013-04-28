@@ -32,13 +32,21 @@
 
     <%= yield %>
 	<div id="spots-left"></div>
-	<div id="instructions">
-		<h1>Cleaner</h1>
-		<p>Oh no!</p>
-		<p>My minimalistic apartment has dirt spots!</p>
-		<p>I'm lucky to have a remote controlled cleaning bot and surveillance cameras.</p>
-		<p>I can control the bot with the WASD keys. The cameras switch automatically.</p>
+	<div class="text" id="instructions">
+		<h1>Cleaner Bot</h1>
+		<h2>By Martin Vilcans. Made in 48 hours for Ludum Dare 26</h2>
+		<p>Oh no!
+		My minimalistic apartment has been invaded by dirt spots!
+		I'm lucky to have a remote controlled cleaning bot and surveillance cameras.
+		I can control the bot with the WASD keys. The cameras switch automatically.</p>
 		<p><button id="start-button">Start</button></p>
+	</div>
+
+	<div class="text" id="success">
+		<h1>I made it!</h1>
+		<p>Time: <span id="time-result"></span></p>
+		<p>Now I can go on with my perfect life.</p>
+		<h2><a href="">Replay</a></h2>
 	</div>
 <!--
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
