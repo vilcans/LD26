@@ -110,7 +110,8 @@ require [
 		sceneLoader.load('default.scene').then((entities) ->
 			for entity in entities
 				refToEntity[entity.ref] = entity
-				entity.addToWorld()
+				unless entity.ref.match('Collision')
+					entity.addToWorld()
 		).then(->
 			return loadImage('resources/collision.png')
 		).then((image) ->
