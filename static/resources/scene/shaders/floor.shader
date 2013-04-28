@@ -2,7 +2,6 @@
 	"vshaderRef": "shaders/floor.vert",
 	"attributes": {
 		"vertexNormal": "NORMAL",
-		"vertexUV0": "TEXCOORD0",
 		"vertexPosition": "POSITION"
 	},
 	"uniforms": {
