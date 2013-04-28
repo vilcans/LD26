@@ -1,23 +1,23 @@
 {
   "components": {
     "meshData": {
-      "meshRef": "meshes/Plane.007.mesh"
+      "meshRef": "meshes/Collision.mesh"
     }, 
     "meshRenderer": {
       "materialRefs": [
-        "materials/Dirt.material"
+        "materials/Wall.material"
       ]
     }, 
     "transform": {
       "scale": [
-        0.19999998807907104, 
-        0.19999998807907104, 
-        0.19999998807907104
+        1.0, 
+        1.0, 
+        1.0
       ], 
       "translation": [
-        2.798694610595703, 
-        -4.267235279083252, 
-        0.001000046730041504
+        -9.0, 
+        -1.0, 
+        0.0
       ], 
       "rotation": [
         -0.0, 

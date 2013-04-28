@@ -1,7 +1,5 @@
 {
-  "indexModes": [
-    "Triangles"
-  ], 
+  "compressed": false, 
   "normals": [
     5.9604616353681195e-08, 
     -1.0, 
@@ -865,12 +863,14 @@
     1.0, 
     -2.8421712818535796e-14
   ], 
-  "name": "Body", 
-  "vertexCount": 287, 
-  "compressed": false, 
   "indexLengths": [
     528
   ], 
+  "indexModes": [
+    "Triangles"
+  ], 
+  "vertexCount": 287, 
+  "name": "Body", 
   "vertices": [
     1.9999995231628418, 
     -1.0000003576278687, 

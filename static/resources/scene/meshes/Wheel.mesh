@@ -1,7 +1,5 @@
 {
-  "indexModes": [
-    "Triangles"
-  ], 
+  "compressed": false, 
   "normals": [
     -0.6856898665428162, 
     0.7278664708137512, 
@@ -331,12 +329,14 @@
     0.7138890027999878, 
     0.1420026272535324
   ], 
-  "name": "Wheel", 
-  "vertexCount": 109, 
-  "compressed": false, 
   "indexLengths": [
     372
   ], 
+  "indexModes": [
+    "Triangles"
+  ], 
+  "vertexCount": 109, 
+  "name": "Wheel", 
   "vertices": [
     5.960464477539063e-08, 
     -0.9999998807907104, 
