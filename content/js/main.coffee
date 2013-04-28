@@ -198,7 +198,7 @@ require [
 						if distanceSquared(car.position, spot.transformComponent.transform.translation) < spotRadiusSquared
 							spot.removeFromWorld()
 							spots = _.without(spots, spot)
-							if spots.length < 17
+							if spots.length == 0
 								document.getElementById('time-result').innerHTML = frameCount
 								document.getElementById('spots-left').style.display = 'none'
 								document.getElementById('success').style.display = 'block'
