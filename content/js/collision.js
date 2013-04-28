@@ -132,4 +132,4 @@ window.addCollisionData = function(b2Vec2, world, bodyDef, fixDef) {
     new b2Vec2(-2.0, 0.0), new b2Vec2(-1.0, 0.0), new b2Vec2(-1.0, 4.0), new b2Vec2(-2.0, 4.0)
   ]);
   world.CreateBody(bodyDef).CreateFixture(fixDef);
-}
+};
