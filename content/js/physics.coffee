@@ -29,13 +29,6 @@ class @Physics
 
 		bodyDef = new b2BodyDef
 
-		# create walls
-		bodyDef.type = b2Body.b2_staticBody
-		#bodyDef.position.x = 0
-		#bodyDef.position.y = -10.5
-		#fixDef.shape = new b2PolygonShape;
-		#fixDef.shape.SetAsBox 10, 0.5
-		#world.CreateBody(bodyDef).CreateFixture(fixDef)
 
 		bodyDef.type = b2Body.b2_staticBody
 		bodyDef.position.x = 0
@@ -43,22 +36,8 @@ class @Physics
 		fixDef.shape = new b2PolygonShape
 
 		window.addCollisionData(b2Vec2, world, bodyDef, fixDef)
-		#debugger
-		#fixDef.shape.SetAsBox .5, (2 + 2.3) / 2
-		#fixDef.shape.SetAsArray([
-			#new b2Vec2(-8.5, -10)
-			#new b2Vec2(9, -10)
 
-		#	new b2Vec2(-9.5, -11)
-		#	new b2Vec2(10, -11)
-			#new b2Vec2(10, 8)
-			#new b2Vec2(9, 8)
-			#new b2Vec2(9, -10)
-			#new b2Vec2(-8.5, -10)
-		#])
-		#world.CreateBody(bodyDef).CreateFixture(fixDef)
-
-		# create some objects
+		# create car
 		bodyDef.type = b2Body.b2_dynamicBody
 		fixDef.density = 1 / 4
 		fixDef.shape = new b2PolygonShape
