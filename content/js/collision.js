@@ -1,23 +1,11 @@
-//Collision mesh data! 33 polys
+//Collision mesh data! 30 polys
 window.addCollisionData = function(b2Vec2, world, bodyDef, fixDef) {
   fixDef.shape.SetAsArray([
     new b2Vec2(4.100000381469727, 0.2999999523162842), new b2Vec2(2.0, 0.2999999523162842), new b2Vec2(2.0, 0.20000004768371582), new b2Vec2(4.100000381469727, 0.20000004768371582)
   ]);
   world.CreateBody(bodyDef).CreateFixture(fixDef);
   fixDef.shape.SetAsArray([
-    new b2Vec2(-8.5, 5.5), new b2Vec2(-9.5, 5.5), new b2Vec2(-9.5, -10.0), new b2Vec2(-8.5, -10.0)
-  ]);
-  world.CreateBody(bodyDef).CreateFixture(fixDef);
-  fixDef.shape.SetAsArray([
-    new b2Vec2(-1.0, -10.0), new b2Vec2(-6.0, -10.0), new b2Vec2(-6.0, -11.0), new b2Vec2(-1.0, -11.0)
-  ]);
-  world.CreateBody(bodyDef).CreateFixture(fixDef);
-  fixDef.shape.SetAsArray([
-    new b2Vec2(6.0, -10.0), new b2Vec2(1.0, -10.0), new b2Vec2(1.0, -11.0), new b2Vec2(6.0, -11.0)
-  ]);
-  world.CreateBody(bodyDef).CreateFixture(fixDef);
-  fixDef.shape.SetAsArray([
-    new b2Vec2(10.0, -10.0), new b2Vec2(8.0, -10.0), new b2Vec2(8.0, -11.0), new b2Vec2(10.0, -11.0)
+    new b2Vec2(10.0, -10.0), new b2Vec2(-8.5, -10.0), new b2Vec2(-9.5, -11.0), new b2Vec2(10.0, -11.0)
   ]);
   world.CreateBody(bodyDef).CreateFixture(fixDef);
   fixDef.shape.SetAsArray([
@@ -77,7 +65,7 @@ window.addCollisionData = function(b2Vec2, world, bodyDef, fixDef) {
   ]);
   world.CreateBody(bodyDef).CreateFixture(fixDef);
   fixDef.shape.SetAsArray([
-    new b2Vec2(-7.599999904632568, -10.0), new b2Vec2(-9.5, -10.0), new b2Vec2(-9.5, -11.0), new b2Vec2(-7.599999904632568, -11.0)
+    new b2Vec2(-8.5, -10.0), new b2Vec2(-8.5, 5.5), new b2Vec2(-9.5, 5.5), new b2Vec2(-9.5, -11.0)
   ]);
   world.CreateBody(bodyDef).CreateFixture(fixDef);
   fixDef.shape.SetAsArray([
