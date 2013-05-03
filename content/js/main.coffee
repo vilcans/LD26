@@ -207,6 +207,8 @@ require [
 								document.getElementById('spots-left').style.display = 'none'
 								document.getElementById('success').style.display = 'block'
 								document.getElementById('goo').style.display = 'none'
+							else
+								Tracking.trackEvent 'game', 'pickup', value: spots.length
 
 							updateSpotsLeft()
 							break
