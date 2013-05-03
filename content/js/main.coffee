@@ -119,8 +119,10 @@ require [
 			console.log 'got image', image
 			map = new Map(image)
 		).then(->
+			Tracking.trackEvent 'init', 'loaded', nonInteraction: true
 			waitForStart()
-		).then(null, ->
+		).then(null, (e) ->
+			Tracking.trackEvent 'init', 'error', label: "#{e}", nonInteraction: true
 			alert 'Failed to load scene: ' + e
 		)
 
@@ -133,6 +135,7 @@ require [
 				start()
 
 		start = ->
+			Tracking.trackEvent 'game', 'start'
 			document.getElementById('goo').style.display = 'block'
 			console.log 'start'
 			car.entity = refToEntity['entities/Car.entity']
@@ -199,6 +202,7 @@ require [
 							spot.removeFromWorld()
 							spots = _.without(spots, spot)
 							if spots.length == 0
+								Tracking.trackEvent 'game', 'success', value: frameCount
 								document.getElementById('time-result').innerHTML = frameCount
 								document.getElementById('spots-left').style.display = 'none'
 								document.getElementById('success').style.display = 'block'
